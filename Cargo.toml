@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 structopt = "0.3.25"
-discord-rpc-client = "0.3.0"
+discord-rich-presence = "0.1.8"
