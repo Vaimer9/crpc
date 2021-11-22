@@ -1,5 +1,10 @@
 use discord_rich_presence::{activity, new_client, DiscordIpc};
 
+enum Buttons {
+    One { name: String, link: String },
+    Two { name: String, link: String , name2: String, link2: String}
+}
+
 // Data struct
 pub struct Data {
     id: String,
@@ -10,7 +15,9 @@ pub struct Data {
     large_image: String,
     small_image: String,
     large_tool: String,
-    small_tool: String
+    small_tool: String,
+    buttons: Buttons,
+    
 }
 
 
@@ -18,19 +25,31 @@ fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
     let mut client = new_client(&data.id)?;
 
     client.connect()?;
-    client.set_activity(activity::Activity::new()
-        .state(&data.status)
-        .details(&data.details)
-        .assets(
-            activity::Assets::new()
-                .large_image(&data.large_image)
-                .large_text(&data.large_tool)
-                .small_image(&data.small_image)
-                .small_text(&data.small_tool)
-        )
-        
-    )?;
+
+    let mut activity = activity::Activity::new();
+
+
+    activity = activity.state(&data.status);
+    activity = activity.details(&data.details);
+    
+    if data.large { activity = activity.assets(activity::Assets::new()
+        .large_image(&data.large_image)
+        .large_text(&data.large_tool)
+    )};
+
+    if data.small { activity = activity.assets(activity::Assets::new()
+        .small_image(&data.large_image)
+        .small_text(&data.large_tool)
+    )};
+
+    if data.buttons == Buttons::One { activity = activity.buttons(
+        vec![
+            
+    ])};
+
+    client.set_activity(activity)?;
 
     loop {}
     Ok(())
 }
+
