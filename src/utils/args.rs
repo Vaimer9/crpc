@@ -2,7 +2,7 @@ use structopt::StructOpt;
 use std::path::PathBuf;
 
 #[derive(StructOpt, Debug)]
-#[derive(name = "crpc")]
+#[structopt(name = "crpc", about = "Discord Rich Presence CLI made in Rust")]
 pub enum Args {
     set {
         #[structopt(short = "s")]
