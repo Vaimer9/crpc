@@ -42,10 +42,29 @@ fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
         .small_text(&data.large_tool)
     )};
 
-    if data.buttons == Buttons::One { activity = activity.buttons(
-        vec![
-            
-    ])};
+
+    match data.buttons {
+        Buttons::One {name, link} => {
+            activity = activity.buttons(
+                vec![activity::Button::new(
+                &namex,
+                &linkx
+            )]);
+        }
+        Buttons::Two { name, link, name2, link2 } => {
+            activity = activity.buttons(
+                vec![activity::Button::new(
+                    &name,
+                    &link
+                )]
+            ).buttons(
+                vec![activity::Button::new(
+                    &name2,
+                    &link2
+                )]
+            );
+        }
+    }
 
     client.set_activity(activity)?;
 
