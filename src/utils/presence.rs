@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use discord_rich_presence::{activity, new_client, DiscordIpc};
 
 enum Buttons {
@@ -12,12 +14,12 @@ pub struct Data {
     details: String,
     large: bool,
     small: bool,
+    want_buttons: bool,
     large_image: String,
     small_image: String,
     large_tool: String,
     small_tool: String,
     buttons: Buttons,
-    
 }
 
 
@@ -42,33 +44,36 @@ fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
         .small_text(&data.large_tool)
     )};
 
-
-    match data.buttons {
-        Buttons::One {name, link} => {
-            activity = activity.buttons(
-                vec![activity::Button::new(
-                &namex,
-                &linkx
-            )]);
-        }
-        Buttons::Two { name, link, name2, link2 } => {
-            activity = activity.buttons(
-                vec![activity::Button::new(
+    if data.want_buttons {
+        match &data.buttons {
+            Buttons::One {name, link} => {
+                activity = activity.buttons(
+                    vec![activity::Button::new(
                     &name,
                     &link
-                )]
-            ).buttons(
-                vec![activity::Button::new(
-                    &name2,
-                    &link2
-                )]
-            );
+                )]);
+            }
+            Buttons::Two { name, link, name2, link2 } => {
+                activity = activity.buttons(
+                    vec![activity::Button::new(
+                        &name,
+                        &link
+                    )]
+                ).buttons(
+                    vec![activity::Button::new(
+                        &name2,
+                        &link2
+                    )]
+                );
+            }
         }
     }
 
     client.set_activity(activity)?;
 
     loop {}
+
+    #[allow(unreachable_code)]
     Ok(())
 }
 

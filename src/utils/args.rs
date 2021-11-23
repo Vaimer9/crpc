@@ -4,7 +4,7 @@ use std::path::PathBuf;
 #[derive(StructOpt, Debug)]
 #[structopt(name = "crpc", about = "Discord Rich Presence CLI made in Rust")]
 pub enum Args {
-    set {
+    Set {
         #[structopt(short = "s")]
         status: String,
 
@@ -25,10 +25,10 @@ pub enum Args {
 
     },
 
-    set_dir {
+    SetDir {
         #[structopt(short = "f")]
         file: PathBuf
     },
 
-    set_conf 
+    SetConf 
 }
