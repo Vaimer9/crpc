@@ -1,6 +1,9 @@
 use crate::utils::presence;
+
+#[macro_use]
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
+
 use std::path::PathBuf;
 use std::fs::File;
 use std::io::{Read, Write};
@@ -21,7 +24,7 @@ struct Formatted {
     buttons: HashMap<String, String> 
 }
 
-pub fn get_data(Path: PathBuf) -> Result<String> {
+pub fn get_data(Path: PathBuf) -> Result<String, Box<dyn std::error::Error>> {
     let mut data = String::new();
     let mut file = File::open(Path)?;
     file.read_to_string(&mut data)?;
@@ -29,7 +32,7 @@ pub fn get_data(Path: PathBuf) -> Result<String> {
 }
 
 
-pub fn get_json(data: String) ->  Result<Formatted>{
+pub fn get_json(data: String) ->  Result<Formatted, Box<dyn std::error::Error>>{
     let data: Formatted = serde_json::from_str(&data)?;
     Ok(data)
 }
