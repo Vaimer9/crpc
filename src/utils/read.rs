@@ -2,8 +2,6 @@ use crate::utils::presence;
 
 #[macro_use]
 use serde::{Deserialize, Serialize};
-use serde_json::Result;
-
 use std::path::PathBuf;
 use std::fs::File;
 use std::io::{Read, Write};
