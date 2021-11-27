@@ -2,7 +2,7 @@
 
 use discord_rich_presence::{activity, new_client, DiscordIpc};
 
-enum Buttons {
+pub enum Buttons {
     One { name: String, link: String },
     Two { name: String, link: String , name2: String, link2: String}
 }
@@ -23,7 +23,8 @@ pub struct Data {
 }
 
 
-fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
+
+pub fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
     let mut client = new_client(&data.id)?;
 
     client.connect()?;

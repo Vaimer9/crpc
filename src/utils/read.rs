@@ -1,14 +1,13 @@
 use crate::utils::presence;
 
-#[macro_use]
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use std::fs::File;
-use std::io::{Read, Write};
+use std::io::Read;
 use std::collections::HashMap;
 
 #[derive(Serialize, Deserialize)]
-struct Formatted {
+pub struct Formatted {
     id: String,
     status: String,
     details: String,
@@ -33,35 +32,4 @@ pub fn get_data(Path: PathBuf) -> Result<String, Box<dyn std::error::Error>> {
 pub fn get_json(data: String) ->  Result<Formatted, Box<dyn std::error::Error>>{
     let data: Formatted = serde_json::from_str(&data)?;
     Ok(data)
-}
-
-pub fn give_example()  {
-    let example = r#"
-    {
-        id: "",
-        status: "",
-        details: "",
-        large: false,
-        small: false,
-        want_buttons: false,
-        large_image: "",
-        small_image: "",
-        large_tool: "",
-        small_tool: "",
-        buttons: {
-            name: "",
-            link: "",
-            name2: "",
-            link2: ""
-        }
-    }
-    "#;
-
-    match File::create("./example.json") {
-        Ok(mut e) => e.write_all(data.as_bytes()).expect("Can't write to file"),
-        Err(_) => {
-            let mut x = File::create("./data_example.json").expect("File already named example.json and dat_example.json");
-            x.write_all(data.as_bytes()).expect("Can't write to file");
-        }
-    }
 }
