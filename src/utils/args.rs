@@ -14,9 +14,12 @@ pub enum Commands {
     #[structopt(about = "Set Presence using the json file specified")]
     Manual {
         #[structopt(short = "f")]
-        file: PathBuf
+        file: PathBuf 
     },
     
     #[structopt(about = "Set Presence using the json file in home directory")]
-    Default
+    Default,
+
+    #[structopt(about = "Create required folder and files, only need to run once")]
+    Init
 }
