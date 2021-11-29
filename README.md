@@ -1,4 +1,4 @@
-# Command Line Rich Presence (CRPC)
+<h1 align="center">Command Line Rich Presence (CRPC)</h1>
 A Blazingly Fast Rich Presence Command Line Application made in rust
 
 ### Current Status: *In Progress*
