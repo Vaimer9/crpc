@@ -1,11 +1,8 @@
 #![allow(dead_code)]
 
-use discord_rich_presence::{activity, new_client, DiscordIpc};
+use crate::utils::read::Formatted;
 
-pub enum Buttons {
-    One { name: String, link: String },
-    Two { name: String, link: String , name2: String, link2: String}
-}
+use discord_rich_presence::{activity, new_client, DiscordIpc};
 
 // Data struct
 pub struct Data {
@@ -15,13 +12,31 @@ pub struct Data {
     large: bool,
     small: bool,
     want_buttons: bool,
+    button_numbers: u8,
     large_image: String,
     small_image: String,
     large_tool: String,
     small_tool: String,
-    buttons: Buttons,
+    buttons: Vec<String>,
 }
 
+impl Data {
+    pub fn get_from_json(fr: Formatted) -> Self {
+        Data {
+            id: fr.id,
+            status: fr.status,
+            details: fr.details,
+            large: fr.large,
+            small: fr.small,
+            want_buttons: fr.want_buttons,
+            large_image: fr.large_image,
+            small_image: fr.small_image,
+            large_tool: fr.large_tool,
+            small_tool: fr.small_tool,
+            buttons: fs.buttons
+        }
+    }
+}
 
 
 pub fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
@@ -46,24 +61,24 @@ pub fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
     )};
 
     if data.want_buttons {
-        match &data.buttons {
-            Buttons::One {name, link} => {
+        match &data.button_numbers {
+            1 | _ => {
                 activity = activity.buttons(
                     vec![activity::Button::new(
-                    &name,
-                    &link
+                    self.buttons[0],
+                    self.buttons[1]
                 )]);
             }
-            Buttons::Two { name, link, name2, link2 } => {
+            2 => {
                 activity = activity.buttons(
                     vec![activity::Button::new(
-                        &name,
-                        &link
+                        self.buttons[0],
+                        self.buttons[1]
                     )]
                 ).buttons(
                     vec![activity::Button::new(
-                        &name2,
-                        &link2
+                        self.buttons[2],
+                        self.buttons[3]
                     )]
                 );
             }
@@ -77,4 +92,3 @@ pub fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
     #[allow(unreachable_code)]
     Ok(())
 }
-

@@ -5,7 +5,7 @@ use std::path::Path;
 use std::fs::File;
 use std::fs;
 use std::io::{Read, Write};
-use std::collections::HashMap;
+use std::collections::Hashmap;
 
 pub const JSON: &str = r#"
 {
@@ -40,7 +40,7 @@ pub struct Formatted {
     small_image: String,
     large_tool: String,
     small_tool: String,
-    buttons: HashMap<String, String>
+    buttons: Vec<String> 
 }
 
 pub fn install() -> std::io::Result<()> {
@@ -72,6 +72,12 @@ pub fn get_data() -> std::io::Result<String> {
         }
     }
     Ok(data)
+}
+
+pub fn get_local_data(path: Path) -> std::io::Result<String> {
+    let mut data = String::new();
+    let mut file = File::open(path)?;
+    file.read_to_string(&mut data);
 }
 
 pub fn get_json(data: String) ->  std::io::Result<Formatted>{
