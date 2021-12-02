@@ -5,7 +5,7 @@ use std::path::PathBuf;
 #[structopt(name = "crpc", about = "Discord Rich Presence CLI made in Rust")]
 pub struct Args {
     #[structopt(subcommand)]
-    commands: Option<Commands>
+    pub commands: Option<Commands>
 } 
 
 

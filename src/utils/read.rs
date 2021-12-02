@@ -5,7 +5,6 @@ use std::path::Path;
 use std::fs::File;
 use std::fs;
 use std::io::{Read, Write};
-use std::collections::Hashmap;
 
 pub const JSON: &str = r#"
 {
@@ -30,17 +29,18 @@ pub const JSON: &str = r#"
 
 #[derive(Serialize, Deserialize)]
 pub struct Formatted {
-    id: String,
-    status: String,
-    details: String,
-    large: bool,
-    small: bool,
-    want_buttons: bool,
-    large_image: String,
-    small_image: String,
-    large_tool: String,
-    small_tool: String,
-    buttons: Vec<String> 
+    pub id: String,
+    pub status: String,
+    pub details: String,
+    pub large: bool,
+    pub small: bool,
+    pub want_buttons: bool,
+    pub button_numbers: u8,
+    pub large_image: String,
+    pub small_image: String,
+    pub large_tool: String,
+    pub small_tool: String,
+    pub buttons: Vec<String> 
 }
 
 pub fn install() -> std::io::Result<()> {
@@ -74,13 +74,16 @@ pub fn get_data() -> std::io::Result<String> {
     Ok(data)
 }
 
-pub fn get_local_data(path: Path) -> std::io::Result<String> {
+pub fn get_local_data(path: &Path) -> std::io::Result<String> {
     let mut data = String::new();
     let mut file = File::open(path)?;
     file.read_to_string(&mut data);
+    Ok(data)
 }
 
 pub fn get_json(data: String) ->  std::io::Result<Formatted>{
     let data: Formatted = serde_json::from_str(&data)?;
     Ok(data)
 }
+
+

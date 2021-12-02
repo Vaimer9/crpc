@@ -21,7 +21,7 @@ pub struct Data {
 }
 
 impl Data {
-    pub fn get_from_json(fr: Formatted) -> Self {
+    pub fn from_json(fr: Formatted) -> Self {
         Data {
             id: fr.id,
             status: fr.status,
@@ -29,11 +29,12 @@ impl Data {
             large: fr.large,
             small: fr.small,
             want_buttons: fr.want_buttons,
+            button_numbers: fr.button_numbers,
             large_image: fr.large_image,
             small_image: fr.small_image,
             large_tool: fr.large_tool,
             small_tool: fr.small_tool,
-            buttons: fs.buttons
+            buttons: fr.buttons
         }
     }
 }
@@ -62,23 +63,23 @@ pub fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
 
     if data.want_buttons {
         match &data.button_numbers {
-            1 | _ => {
+            1 | &_ => {
                 activity = activity.buttons(
                     vec![activity::Button::new(
-                    self.buttons[0],
-                    self.buttons[1]
+                    &data.buttons[0],
+                    &data.buttons[1]
                 )]);
             }
             2 => {
                 activity = activity.buttons(
                     vec![activity::Button::new(
-                        self.buttons[0],
-                        self.buttons[1]
+                        &data.buttons[0],
+                        &data.buttons[1]
                     )]
                 ).buttons(
                     vec![activity::Button::new(
-                        self.buttons[2],
-                        self.buttons[3]
+                        &data.buttons[2],
+                        &data.buttons[3]
                     )]
                 );
             }
