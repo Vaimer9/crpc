@@ -87,6 +87,7 @@ pub fn start(data: Data) -> Result<(), Box<dyn std::error::Error>> {
     }
 
     client.set_activity(activity)?;
+    println!("Started Presence");
 
     loop {}
 

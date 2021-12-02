@@ -1,27 +1,22 @@
-<h1 align="center">Command Line Rich Presence (CRPC)</h1>
+<h1 align="center">Command Line Rich Presence🚀</h1>
 A Blazingly Fast Rich Presence Command Line Application made in rust
 
-### Current Status: *In Progress*
 
 ### JSON Example
-```
+```json
 {
-	id: "",
-	status: "",
-	details: "",
-	large: false,
-	smalle: false,
-	want_buttons: false,
-	large_image: "",
-	small_image: "",
-	large_tool: "",
-	small_tool: "",
-	buttons: {
-		name: "",
-		link: "",
-		name2: "",
-		link2: ""
-	}
+	"id": "",
+	"status": "",
+	"details": "",
+	"large": true,
+	"small": false,
+	"want_buttons": false,
+	"button_numbers": 1,
+	"large_image": "",
+	"small_image": "",
+	"large_tool": "",
+	"small_tool": "",
+	"buttons": ["", "", "", ""]
 }
 ```
 I have tried my best to keep the JSON as simple as possible.

@@ -8,22 +8,18 @@ use std::io::{Read, Write};
 
 pub const JSON: &str = r#"
 {
-	id: "",
-	status: "",
-	details: "",
-	large: false,
-	smalle: false,
-	want_buttons: false,
-	large_image: "",
-	small_image: "",
-	large_tool: "",
-	small_tool: "",
-	buttons: {
-		name: "",
-		link: "",
-		name2: "",
-		link2: ""
-	}
+	"id": "",
+	"status": "",
+	"details": "",
+	"large": true,
+	"small": false,
+	"want_buttons": false,
+	"button_numbers": 1,
+	"large_image": "",
+	"small_image": "",
+	"large_tool": "",
+	"small_tool": "",
+	"buttons": ["", "", "", ""]
 }
 "#;
 
@@ -56,7 +52,6 @@ pub fn install() -> std::io::Result<()> {
             }
         }
     }
-
     Ok(())
 }
 
