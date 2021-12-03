@@ -2,6 +2,24 @@
 <p align="center"><img src="images/Frame 1.svg"></p>
 A Blazingly Fast Rich Presence Command Line Application made in rust
 
+<details>
+<summary>Installation</summary>
+<br>
+This is how you dropdown.
+</details>
+
+<details>
+<summary>Build Locally</summary>
+<br>
+This is how you dropdown.
+</details>
+
+<details>
+<summary>QuickStart</summary>
+<br>
+This is how you dropdown.
+</details>
+
 
 ### JSON Example
 ```json
@@ -21,4 +39,3 @@ A Blazingly Fast Rich Presence Command Line Application made in rust
 }
 ```
 I have tried my best to keep the JSON as simple as possible.
-
