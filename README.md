@@ -3,19 +3,19 @@
 A Blazingly Fast Rich Presence Command Line Application made in rust
 
 <details>
-<summary>Installation</summary>
+<summary><h2>Installation</h2></summary>
 <br>
 This is how you dropdown.
 </details>
 
 <details>
-<summary>Build Locally</summary>
+<summary><h2>Build Locally</h2></summary>
 <br>
 This is how you dropdown.
 </details>
 
 <details>
-<summary>QuickStart</summary>
+<summary><h2>QuickStart</h2></summary>
 <br>
 This is how you dropdown.
 </details>
