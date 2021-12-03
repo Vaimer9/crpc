@@ -1,8 +1,8 @@
 <h1 align="center">Command Line Rich Presence🚀</h1>
-<p align="center">
-	<img src="images/Frame 1.svg">
-	A Blazingly Fast Rich Presence Command Line Application made in rust
-</p>
+<div align="center">
+<p align="center"><img src="images/Frame 1.svg"></p>
+<p align="center">A Blazingly Fast Rich Presence Command Line Application made in rust</p>
+</div>
 
 <details>
 <summary>Installation</summary>
