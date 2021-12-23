@@ -25,7 +25,7 @@ cargo build --release
 ```
 cd target/release
 ```
-4, Run the binary
+4. Run the binary
 ```
 ./crpc --help
 ```
